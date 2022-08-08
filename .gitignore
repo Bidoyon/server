@@ -1,0 +1,11 @@
+# Node modules
+node_modules
+
+# Dotenv
+.env
+
+# IntelliJ files
+.idea/
+
+# Generated folder
+/dist
