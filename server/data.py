@@ -44,6 +44,10 @@ class Data:
     def get_squeeze(self, id: int):
         return self.database.basic_individual_select(["id", "fruits", "juice"], "squeezes", "id", id)
 
+    def add_squeeze(self):
+        with self.database as cursor:
+            cursor.execute("INSERT INTO squeezes (fruits, juice) VALUES (0, 0)")
+
     def remove_squeeze(self, id: int):
         with self.database as cursor:
             cursor.execute("DELETE FROM squeezes WHERE id=?", [id])
@@ -76,7 +80,7 @@ class Data:
 
     def remove_container(self, id: int):
         with self.database as cursor:
-            cursor.execute("DELETE FROM containers WHERE id=?")
+            cursor.execute("DELETE FROM containers WHERE id=?", [id])
 
     def set_container_owner(self, id: int, owner: int = CommonUser):
         with self.database as cursor:
